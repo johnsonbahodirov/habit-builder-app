@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HabitBuilder Dashboard</title>
+    <meta
+      name="description"
+      content="HabitBuilder is a modern habit tracker with dashboard analytics, weekly charts, and a monthly view."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="brand-mark">H</div>
+          <div>
+            <p class="eyebrow">Planner</p>
+            <h2>HabitBuilder</h2>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-item active" type="button">Dashboard</button>
+          <button class="nav-item" type="button">Habits</button>
+          <button class="nav-item" type="button">Insights</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="small-label">Today</p>
+          <p id="todayDateLabel" class="today-date">Loading...</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow muted">Dashboard</p>
+            <h1>Progress Overview</h1>
+          </div>
+
+          <div class="topbar-actions">
+            <button id="markTodayBtn" class="primary-btn" type="button">Mark today done</button>
+            <button id="resetBtn" class="ghost-btn" type="button">Reset all</button>
+          </div>
+        </header>
+
+        <section id="statsGrid" class="stats-grid" aria-live="polite"></section>
+
+        <section class="content-grid">
+          <div class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <p class="small-label">Overview</p>
+                <h3>Weekly progress</h3>
+              </div>
+            </div>
+            <div id="weeklyChart" class="weekly-chart" aria-label="Weekly progress chart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="small-label">Insights</p>
+                <h3>Habit categories</h3>
+              </div>
+            </div>
+            <div id="categoryList" class="category-list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel form-panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="small-label">Create</p>
+                <h3>Add a new habit</h3>
+              </div>
+            </div>
+
+            <form id="habitForm" class="habit-form">
+              <div class="field">
+                <label for="habitName">Habit name</label>
+                <input id="habitName" name="habitName" type="text" placeholder="Example: Morning run" required />
+              </div>
+
+              <div class="field dual-field">
+                <div>
+                  <label for="habitCategory">Category</label>
+                  <select id="habitCategory" name="habitCategory">
+                    <option value="Health">Health</option>
+                    <option value="Productivity">Productivity</option>
+                    <option value="Learning">Learning</option>
+                    <option value="Mindfulness">Mindfulness</option>
+                    <option value="Creativity">Creativity</option>
+                    <option value="Personal">Personal</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="habitColor">Color</label>
+                  <input id="habitColor" name="habitColor" type="color" value="#4f6ef7" />
+                </div>
+              </div>
+
+              <button class="primary-btn submit-btn" type="submit">Save habit</button>
+            </form>
+          </div>
+
+          <div class="panel calendar-panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="small-label">Calendar</p>
+                <h3>Monthly view</h3>
+              </div>
+
+              <div class="month-nav">
+                <button id="prevMonthBtn" type="button" aria-label="Previous month">←</button>
+                <button id="nextMonthBtn" type="button" aria-label="Next month">→</button>
+              </div>
+            </div>
+
+            <div id="calendarMonthLabel" class="calendar-month-label"></div>
+            <div class="weekday-row">
+              <span>Sun</span>
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+            </div>
+            <div id="calendarGrid" class="calendar-grid" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="panel habit-panel">
+          <div class="panel-header compact">
+            <div>
+              <p class="small-label">Tracking</p>
+              <h3>My habits</h3>
+            </div>
+          </div>
+
+          <div id="habitList" class="habit-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
